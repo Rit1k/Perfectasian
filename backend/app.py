@@ -12,10 +12,10 @@ import base64
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'dev')
+
 
 # MongoDB configuration
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/perfectasianinterior'
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 mongo = PyMongo(app)
 
 # Allowed recipient emails for dropdown
