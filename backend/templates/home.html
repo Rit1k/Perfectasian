@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Asian Interiors - Home</title>
+    
+    <link rel="icon" type="image/png" href="/static/images/deskicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/static/images/homebackground.jpeg') center center/cover no-repeat;
+            color: #fff;
+        }
+        .navbar-brand img {
+            height: 80px;
+            width: 160px;
+        }
+        .director-img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+        .director-section {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+            .director-section .row {
+                align-items: flex-start !important;
+            }
+            .director-img {
+                margin-top: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background: #fff; min-height: 120px; align-items: center; border-bottom: 10px solid #8dc63f; position: sticky; top: 0; z-index: 1030;">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/static/images/logo.png" alt="Perfect Asian Interiors Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="background: #8dc63f;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- <li class="nav-item"><a class="nav-link text-secondary" href="/">Home</a></li> -->
+                    <li class="nav-item"><a class="nav-link text-secondary" href="/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" href="/projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" href="/about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" href="/testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" href="/contact">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link btn" style="background: #8dc63f; color: #fff; font-weight: 600; margin-left: 0.5rem;" href="/request-quote">Request a Free Quote</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero hero-bg text-center py-5 d-flex align-items-center" style="min-height: 60vh; margin-bottom: 7rem;">
+        <div class="container-fluid">
+            <h1 class="display-4">Crafting Elegant Interiors with Precision</h1>
+            <p class="lead">Transforming spaces with expertise in tiles, marble, paint, and gypsum work.</p>
+        </div>
+    </section>
+    <section class="container-fluid director-section">
+        <div class="row align-items-center g-4 flex-column flex-md-row">
+            <div class="col-12 col-md-4 d-flex justify-content-center mb-3 mb-md-0">
+                <img src="/static/images/lalji.jpg" alt="Managing Director Bihari Lal" class="director-img img-fluid" style="max-width: 320px; width: 100%; border-radius: 1rem; box-shadow: 0 4px 24px rgba(0,0,0,0.10);">
+            </div>
+            <div class="col-12 col-md-8">
+                <h3 class="mb-3">Managing Director</h3>
+                <p class="mb-0">Greetings! I'm <strong>Bihari Lal</strong>, the Managing Director of Perfect Asian Interior.<br><br>
+With deep pride and passion, I welcome you to our company — a name trusted across Bahrain for excellence in interior contracting. At Perfect Asian Interior, we specialize in delivering high-quality tile, marble, paint, and gypsum works, tailored to elevate both residential and commercial spaces. Our journey has been built on craftsmanship, commitment, and client satisfaction, with numerous successful projects that reflect our dedication to perfection. Backed by a skilled team and years of hands-on experience, we don't just complete projects — we bring visions to life. Whether you're renovating a home or building a business space, we're here to ensure the results are flawless, on time, and beyond expectation.</p>
+            </div>
+        </div>
+    </section>
+    <div style="margin-top: 7rem;"></div>
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

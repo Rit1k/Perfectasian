@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Perfect Asian Interiors</title>
+    <link rel="icon" type="image/png" href="/static/images/deskicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .service-card {
+            padding: 2.5rem 1rem 2.5rem 1rem;
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px 0 rgba(180,180,180,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .service-card:hover {
+            box-shadow: 0 8px 32px 0 rgba(180,180,180,0.25);
+            transform: translateY(-8px) scale(1.03);
+        }
+        .services-title-space {
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <section class="container-fluid py-5">
+        <h2 class="text-center services-title-space">Our Services</h2>
+        <div class="row g-4">
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <div class="service-card w-100">
+                    <img src="/static/images/tilework.jpg" alt="Tile Work" class="mb-3 img-fluid" style="width:100px; height:100px; object-fit:cover;">
+                    <h5>TILE WORK</h5>
+                    <p>Expert installation and design of floor and wall tiles for all spaces.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <div class="service-card w-100">
+                    <img src="/static/images/marblework.jpg" alt="Marble Work" class="mb-3 img-fluid" style="width:100px; height:100px; object-fit:cover;">
+                    <h5>MARBLE WORK</h5>
+                    <p>Premium marble work for elegant flooring, countertops, and features.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <div class="service-card w-100">
+                    <img src="/static/images/gypsumwork.jpg" alt="Gypsum Ceiling Work" class="mb-3 img-fluid" style="width:100px; height:100px; object-fit:cover;">
+                    <h5>GYPSUM CEILINGWORK</h5>
+                    <p>Custom gypsum ceiling and partition solutions for modern interiors.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <div class="service-card w-100">
+                    <img src="/static/images/granitework.jpg" alt="Granite Work" class="mb-3 img-fluid" style="width:100px; height:100px; object-fit:cover;">
+                    <h5>GRANITE WORK</h5>
+                    <p>Durable and stylish granite installations for kitchens and more.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <div class="service-card w-100">
+                    <img src="/static/images/painting.jpg" alt="Painting" class="mb-3 img-fluid" style="width:100px; height:100px; object-fit:cover;">
+                    <h5>PAINTING</h5>
+                    <p>Professional painting services with a wide range of colors and finishes.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <div class="service-card w-100">
+                    <img src="/static/images/maintenancework.jpg" alt="Maintenance" class="mb-3 img-fluid" style="width:100px; height:100px; object-fit:cover;">
+                    <h5>MAINTENANCE</h5>
+                    <p>Reliable maintenance services to keep your property in top condition.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <div class="service-card w-100">
+                    <img src="/static/images/Interiordesignwork.jpg" alt="Interior Design Work" class="mb-3 img-fluid" style="width:100px; height:100px; object-fit:cover;">
+                    <h5>INTERIOR DESIGN WORK</h5>
+                    <p>Creative and functional interior design solutions tailored to your needs.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 d-flex">
+                <div class="service-card w-100">
+                    <img src="/static/images/civilwork.jpg" alt="Civil Work" class="mb-3 img-fluid" style="width:100px; height:100px; object-fit:cover;">
+                    <h5>Civil Work</h5>
+                    <p>Comprehensive civil work for residential and commercial projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

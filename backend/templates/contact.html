@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Perfect Asian Interiors</title>
+    <link rel="icon" type="image/png" href="/static/images/deskicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f8f9fa; min-height: 100vh; }
+        .contact-card {
+            background: #fff;
+            border-radius: 1.25rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            padding: 2.5rem;
+            max-width: 480px;
+            margin: 3rem auto;
+        }
+        .contact-card h2 {
+            color: #228B22;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .form-label { font-weight: 500; color: #222; }
+        .form-control:focus {
+            border-color: #8dc63f;
+            box-shadow: 0 0 0 0.2rem rgba(141,198,63,.15);
+        }
+        #sendBtn {
+            background: #8dc63f;
+            color: #fff;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        #sendBtn:hover, #sendBtn:focus { background: #228B22; }
+        #toast {
+            display: none;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        #toast.success { background: #e6f9e6; color: #228B22; display: block; }
+        #toast.error { background: #fdeaea; color: #b91c1c; display: block; }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <section>
+        <div class="contact-card w-100" style="max-width: 480px; margin: 3rem auto;">
+            <h2 style="color: #8dc63f;">Contact Us</h2>
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control w-100" required autocomplete="name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control w-100" required autocomplete="email">
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-control w-100" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-control w-100" rows="4" required></textarea>
+                </div>
+                <button type="submit" id="sendBtn" class="btn w-100 d-flex align-items-center justify-content-center gap-2" disabled>
+                    <span id="btnText">Send Message</span>
+                    <span id="loadingSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+                </button>
+            </form>
+            <div id="toast"></div>
+        </div>
+    </section>
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Enable button only if all fields are filled
+    const form = document.getElementById('contactForm');
+    const sendBtn = document.getElementById('sendBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('loadingSpinner');
+    const toast = document.getElementById('toast');
+    form.addEventListener('input', () => {
+        sendBtn.disabled = !form.checkValidity();
+    });
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        sendBtn.disabled = true;
+        btnText.textContent = 'Sending...';
+        spinner.classList.remove('d-none');
+        toast.className = '';
+        toast.textContent = '';
+        // Validate email format
+        const email = form.email.value.trim();
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            toast.textContent = 'Please enter a valid email address.';
+            toast.className = 'error';
+            btnText.textContent = 'Send Message';
+            spinner.classList.add('d-none');
+            sendBtn.disabled = false;
+            return;
+        }
+        // AJAX submit
+        const data = {
+            name: form.name.value.trim(),
+            email: form.email.value.trim(),
+            subject: form.subject.value.trim(),
+            message: form.message.value.trim()
+        };
+        try {
+            const res = await fetch('/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            if (result.success) {
+                toast.textContent = 'Message sent successfully!';
+                toast.className = 'success';
+                form.reset();
+                sendBtn.disabled = true;
+            } else {
+                toast.textContent = result.error || 'Failed to send message.';
+                toast.className = 'error';
+                sendBtn.disabled = false;
+            }
+        } catch (err) {
+            toast.textContent = 'Failed to send message.';
+            toast.className = 'error';
+            sendBtn.disabled = false;
+        }
+        btnText.textContent = 'Send Message';
+        spinner.classList.add('d-none');
+    });
+    </script>
+</body>
+</html> 
