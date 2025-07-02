@@ -16,9 +16,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-
-# MongoDB configuration
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["MONGO_URI"] = "mongodb+srv://username:password@perfectasian.kxr9ou9.mongodb.net/PerfectasianDB.Testimonials?retryWrites=true&w=majority&appName=Perfectasian"
 mongo = PyMongo(app)
 
 # Allowed recipient emails for dropdown
