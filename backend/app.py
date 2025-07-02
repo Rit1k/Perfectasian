@@ -10,13 +10,11 @@ from werkzeug.utils import secure_filename
 import base64
 from urllib.parse import quote_plus
 
-username = quote_plus("ritikprajapat05")
-password = quote_plus("P@ssw0rd05")
 load_dotenv()
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = "mongodb+srv://username:password@perfectasian.kxr9ou9.mongodb.net/PerfectasianDB.Testimonials?retryWrites=true&w=majority&appName=Perfectasian"
+app.config["MONGO_URI"] = os.getenv("MONGO_URI") 
 mongo = PyMongo(app)
 
 # Allowed recipient emails for dropdown
