@@ -8,7 +8,10 @@ from flask_cors import CORS
 from dotenv import load_dotenv  # Make sure to install python-dotenv: pip install python-dotenv
 from werkzeug.utils import secure_filename
 import base64
+from urllib.parse import quote_plus
 
+username = quote_plus("ritikprajapat05")
+password = quote_plus("P@ssw0rd05")
 load_dotenv()
 
 app = Flask(__name__)
