@@ -16,6 +16,8 @@ app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.getenv("MONGO_URI") 
 mongo = PyMongo(app)
+db = mongo.db
+testimonials_collection = db.Testimonials
 
 # Allowed recipient emails for dropdown
 ALLOWED_RECIPIENTS = [
