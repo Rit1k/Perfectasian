@@ -14,11 +14,9 @@ load_dotenv()
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = os.getenv("MONGO_URI") 
-print("DEBUG: MONGO_URI =", os.getenv("MONGO_URI"))
+# MongoDB configuration
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
-db = mongo.db
-testimonials_collection = db.Testimonials
 
 # Allowed recipient emails for dropdown
 ALLOWED_RECIPIENTS = [
@@ -37,6 +35,11 @@ MAX_FILE_SIZE = 5 * 1024 * 1024  # 5MB
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# Health check endpoint for keeping service warm
+@app.route('/health')
+def health():
+    return jsonify({'status': 'healthy', 'timestamp': datetime.utcnow().isoformat()}), 200
 
 # Homepage
 @app.route('/')
