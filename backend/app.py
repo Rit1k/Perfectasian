@@ -59,12 +59,11 @@ def services():
     return render_template('services.html')
 
 # Projects/Portfolio Page
+db = mongo.cx["perfectasian"]
+
 @app.route('/projects')
 def projects():
-    if mongo is None:
-        return render_template("projects.html", projects=[])
-
-    projects = mongo.db.projects.find()
+    projects = db.projects.find()
     return render_template("projects.html", projects=projects)
 
 # About Us Page
