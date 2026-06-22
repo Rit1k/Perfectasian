@@ -17,14 +17,13 @@ app = Flask(__name__)
 # MongoDB configuration
 uri = os.getenv("MONGO_URI")
 
-if uri:
-    safe_uri = uri.split("@")[-1]
-    print("Mongo Host:", safe_uri)
-else:
-    print("MONGO_URI is NOT set!")
-
-app.config["MONGO_URI"] = uri
-mongo = PyMongo(app)
+try:
+    app.config["MONGO_URI"] = uri
+    mongo = PyMongo(app)
+    print("✅ MongoDB connected")
+except Exception as e:
+    print("❌ MongoDB connection failed:", e)
+    mongo = None
 
 # Allowed recipient emails for dropdown
 ALLOWED_RECIPIENTS = [
@@ -62,8 +61,11 @@ def services():
 # Projects/Portfolio Page
 @app.route('/projects')
 def projects():
+    if mongo is None:
+        return render_template("projects.html", projects=[])
+
     projects = mongo.db.projects.find()
-    return render_template('projects.html', projects=projects)
+    return render_template("projects.html", projects=projects)
 
 # About Us Page
 @app.route('/about')
