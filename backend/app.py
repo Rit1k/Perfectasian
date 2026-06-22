@@ -15,7 +15,15 @@ load_dotenv()
 app = Flask(__name__)
 
 # MongoDB configuration
-app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+uri = os.getenv("MONGO_URI")
+
+if uri:
+    safe_uri = uri.split("@")[-1]
+    print("Mongo Host:", safe_uri)
+else:
+    print("MONGO_URI is NOT set!")
+
+app.config["MONGO_URI"] = uri
 mongo = PyMongo(app)
 
 # Allowed recipient emails for dropdown
